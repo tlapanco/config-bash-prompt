@@ -1,4 +1,22 @@
 #!/bin/bash
 
 # Bash prompt personalizado
-echo "PS1='\[\e[1;38;5;141m\]╭─ \[\e[1;38;5;75m\]\u\[\e[0m\] \[\e[38;5;245m\]at\[\e[0m\] \[\e[1;38;5;114m\]\h\[\e[0m\] \[\e[38;5;245m\]in\[\e[0m\] \[\e[1;38;5;221m\]\w\[\e[0m\]\n\[\e[1;38;5;141m\]╰─ ❯ \[\e[0m\]'" >> .bashrc
+
+BASHRC="$HOME/.bashrc"
+
+if ! grep -q "CUSTOM_BASH_PROMPT" "$BASHRC"; then
+
+    cat <<'EOF' >> "$BASHRC"
+
+# CUSTOM_BASH_PROMPT
+PS1='\[\e[1;38;5;141m\]╭─ \[\e[1;38;5;75m\]\u\[\e[0m\] \[\e[38;5;245m\]at\[\e[0m\] \[\e[1;38;5;114m\]\h\[\e[0m\] \[\e[38;5;245m\]in\[\e[0m\] \[\e[1;38;5;221m\]\w\[\e[0m\]\n\[\e[1;38;5;141m\]╰─ ❯ \[\e[0m\]'
+EOF
+
+    echo "[+] Prompt personalizado instalado."
+
+else
+    echo "[!] El prompt ya está instalado."
+fi
+
+#echo "[+] Ejecuta: source ~/.bashrc"
+source .bashrc
