@@ -35,7 +35,7 @@ MARKER="CUSTOM_BASH_PROMPT"
 
 echo ""
 echo -e "${PURPLE}${BOLD}╭──────────────────────────────────────────╮${RESET}"
-echo -e "${PURPLE}${BOLD}│        CUSTOM BASH PROMPT INSTALLER       │${RESET}"
+echo -e "${PURPLE}${BOLD}│       CUSTOM BASH PROMPT INSTALLER       │${RESET}"
 echo -e "${PURPLE}${BOLD}╰──────────────────────────────────────────╯${RESET}"
 echo ""
 
@@ -46,7 +46,7 @@ echo ""
 if [[ ! -f "$BASHRC" ]]; then
     echo -e "${RED}[ERROR]${RESET} No se encontró el archivo .bashrc"
     echo -e "${YELLOW}[INFO]${RESET} Creando archivo de configuración..."
-    
+
     touch "$BASHRC" || {
         echo -e "${RED}[ERROR]${RESET} No se pudo crear .bashrc"
         exit 1
@@ -61,6 +61,7 @@ if grep -q "$MARKER" "$BASHRC"; then
 
     echo -e "${YELLOW}[!]${RESET} El prompt personalizado ya está instalado."
     echo -e "${GRAY}[INFO]${RESET} No se realizaron modificaciones."
+    echo ""
 
 else
 
@@ -87,26 +88,21 @@ EOF
 
     if grep -q "$MARKER" "$BASHRC"; then
         echo -e "${GREEN}[SUCCESS]${RESET} Prompt personalizado instalado correctamente."
+        echo ""
+        echo -e "${PURPLE}╭──────────────────────────────────────────╮${RESET}"
+        echo -e "${PURPLE}│          INSTALACIÓN FINALIZADA          │${RESET}"
+        echo -e "${PURPLE}╰──────────────────────────────────────────╯${RESET}"
+
+        echo ""
+        echo -e "${CYAN}[INFO]${RESET} Para aplicar los cambios inmediatamente ejecuta:"
+        echo ""
+        echo -e "  ${GREEN}source ~/.bashrc${RESET}"
+        echo ""
+        echo -e "${GRAY}También puedes cerrar y abrir nuevamente tu terminal.${RESET}"
+        echo ""
     else
         echo -e "${RED}[ERROR]${RESET} No se pudo instalar el prompt."
         exit 1
     fi
 
 fi
-
-# ------------------------------------------------------------
-# Instrucciones finales
-# ------------------------------------------------------------
-
-echo ""
-echo -e "${PURPLE}╭──────────────────────────────────────────╮${RESET}"
-echo -e "${PURPLE}│             INSTALACIÓN FINALIZADA       │${RESET}"
-echo -e "${PURPLE}╰──────────────────────────────────────────╯${RESET}"
-
-echo ""
-echo -e "${CYAN}[INFO]${RESET} Para aplicar los cambios inmediatamente ejecuta:"
-echo ""
-echo -e "  ${GREEN}source ~/.bashrc${RESET}"
-echo ""
-echo -e "${GRAY}También puedes cerrar y abrir nuevamente tu terminal.${RESET}"
-echo ""
